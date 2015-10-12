@@ -9,7 +9,7 @@
 
 
 // Github Config
-var access_token = 'a8e1007e82c97ab8764d9d2c99d0893b11484dc0'; // Token to increase the requests from Github API
+var access_token = ''; // Token to increase the requests from Github API
 var commitResults = '20'; // Total of the commit results
 
 jQuery.githubUser = function(username, callback) {
