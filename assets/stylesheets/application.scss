@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+/*
+    Cosme Faé
+    cosmefae.com / cosme@cosmefae.com
+
+    Linkedin: http://linkedin.com/in/cosmefae
+    Github: http://github.com/cosmefae
+    Behance: http://be.net/cosmefae
+*/
+
+// Normalize
+@import "normalize.css";
+// Import Google Font
+@import "http://fonts.googleapis.com/css?family=Raleway:400,900,800,700,600,500,300,200,100";
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+ol, li {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: Raleway, Helvetica, Arial, sans-serif;
+}
+
+// Spaces
+$spc: 30px;
+
+// Transition Effects
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+       -o-transition: $transition;
+          transition: $transition;
+}
+@mixin translate($x,$y) {
+  -webkit-transform: translate($x,$y);
+      -ms-transform: translate($x,$y); // IE9 only
+       -o-transform: translate($x,$y);
+          transform: translate($x,$y);
+}
+
+.loader {
+  background-color: #0BA5E4;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  @include translate(-50%, -50%);
+
+  .double-bounce1 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+  }
+
+  .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+  }
+}
+
+@keyframes sk-bounce {
+  0%, 100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
+
+
+
+a, .transition-smooth {
+  @include transition(all 170ms ease-in-out);
+}
+
+.btn {
+  border: 0;
+  background-color: #A2C2D0;
+  border-radius: 2px;
+  color: #fff;
+  font-size: .8rem;
+  text-align: center;
+  padding: 10px 20px;
+  @extend .transition-smooth;
+  &:hover {
+    background-color: #7B9EAD;
+  }
+}
+
+#grid-list-projects {
+  @extend .transition-smooth;
+  background-color: #0BA5E4;
+  float: left;
+  text-align: right;
+  width: 50%;
+
+  h1 {
+    background: rgba(0,0,0,.2);
+    color: #fff;
+    font-weight: normal;
+    font-size: 1rem;
+    margin: 0;
+    padding: $spc/2 $spc/1.5;
+    strong {
+      font-weight: bold;
+    }
+    em {
+      color: darken(#fff, 10%);
+      opacity: .9;
+      font-size: 50%;
+    }
+  }
+  li {
+    list-style: none;
+    &.current {
+      a {
+        background: rgba(255,255,255,.2);
+      }
+    }
+  }
+  a {
+    color: #fff;
+    display: block;
+    padding: $spc/2 $spc/1.5;
+    &:hover {
+      background: rgba(255,255,255,.2);
+    }
+  }
+}
+#content {
+  @extend .transition-smooth;
+  background-color: #fff;
+  float: right;
+  padding: 55px $spc $spc $spc;
+  width: 50%;
+  .post {
+    header {
+      margin-bottom: $spc;
+      h2 {
+        color: #0BA5E4;
+        font-size: 2rem;
+        margin: 0;
+      }
+      small {
+        color: #0984B7;
+      }
+    }
+    footer {
+      margin-top: $spc;
+    }
+  }
+}
+.list-commits {
+  counter-reset: section;
+  display: none;
+  li {
+    color: lighten(#000, 10%);
+    list-style: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    &:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    &:before {
+      counter-increment: section;
+      content: counter(section);
+      display: inline-block;
+      font-size: .7rem;
+      margin-right: 10px;
+      text-align: right;
+      width: 10px;
+    }
+  }
+}
+
